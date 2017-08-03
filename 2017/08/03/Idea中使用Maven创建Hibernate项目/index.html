@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Maven,Hibernate," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="直接上干货">
+<meta name="keywords" content="Maven,Hibernate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Idea中使用Maven创建Hibernate项目">
+<meta property="og:url" content="http://luffyxin.me/2017/08/03/Idea中使用Maven创建Hibernate项目/index.html">
+<meta property="og:site_name" content="生鱼忧患|死鱼安乐">
+<meta property="og:description" content="直接上干货">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven01.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven02.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven03.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven04.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven05.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven06.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven07.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven08.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven09.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven10.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven11.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven12.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven13.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven14.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven15.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven16.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven17.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven18.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven19.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven20.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven21.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven22.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven23.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven24.png">
+<meta property="og:image" content="http://ot0cka5de.bkt.clouddn.com/maven25.png">
+<meta property="og:updated_time" content="2017-08-03T04:03:34.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Idea中使用Maven创建Hibernate项目">
+<meta name="twitter:description" content="直接上干货">
+<meta name="twitter:image" content="http://ot0cka5de.bkt.clouddn.com/maven01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://luffyxin.me/2017/08/03/Idea中使用Maven创建Hibernate项目/"/>
+
+
+
+
+
+  <title>Idea中使用Maven创建Hibernate项目 | 生鱼忧患|死鱼安乐</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">生鱼忧患|死鱼安乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://luffyxin.me/2017/08/03/Idea中使用Maven创建Hibernate项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生鱼忧患|死鱼安乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Idea中使用Maven创建Hibernate项目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T08:13:55+08:00">
+                2017-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="直接上干货"><a href="#直接上干货" class="headerlink" title="直接上干货"></a>直接上干货</h1><a id="more"></a>
+<h1 id="步骤记录"><a href="#步骤记录" class="headerlink" title="步骤记录"></a>步骤记录</h1><p>1.在idea的创建项目界面，选择Maven，并且选择quickstart项目，点击next<br><img src="http://ot0cka5de.bkt.clouddn.com/maven01.png" alt="maven01"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven02.png" alt="maven02"><br>进入项目界面后，选择Maven自动导入包，如下图，最后等待初始化完成<br><img src="http://ot0cka5de.bkt.clouddn.com/maven03.png" alt="maven03"></p>
+<p>初始化完成后，可以看到目录带src文件夹。接下来就要对pom.xml进行配置，让Maven自动下载需要的依赖包。<br><img src="http://ot0cka5de.bkt.clouddn.com/maven04.png" alt="maven04"></p>
+<p><strong>双击pom.xml，在块内添加</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 添加Junit依赖 --&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;junit&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;junit&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;4.12&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line"></div><div class="line">&lt;!-- 添加mysql驱动依赖 --&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;5.1.39&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line"></div><div class="line">&lt;!-- 添加hibernate依赖包 --&gt;</div><div class="line">&lt;dependency&gt;</div><div class="line">    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;5.2.6.Final&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<p><strong>如下图</strong></p>
+<p><img src="http://ot0cka5de.bkt.clouddn.com/maven05.png" alt="maven05"><br>对项目目录进行必要的配置</p>
+<ul>
+<li>在main目录下添加resources文件夹，并且设置为resource</li>
+<li>在test目录下添加resources文件夹，并且设置为test-resources<br><img src="http://ot0cka5de.bkt.clouddn.com/maven06.png" alt="maven06"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven07.png" alt="maven07"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven08.png" alt="maven08"><br><strong>添加hibernate的配置文件</strong><br><img src="http://ot0cka5de.bkt.clouddn.com/maven09.png" alt="maven09"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven10.png" alt="maven10"><br><strong>结果如下</strong><br><img src="http://ot0cka5de.bkt.clouddn.com/maven11.png" alt="maven11"><br><strong>配置hibernate.cfg.xml文件，没啥好说，直接上配置内容</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos;?&gt;</div><div class="line">&lt;!DOCTYPE hibernate-configuration PUBLIC</div><div class="line">    &quot;-//Hibernate/Hibernate Configuration DTD//EN&quot;</div><div class="line">    &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;</div><div class="line">&lt;hibernate-configuration&gt;</div><div class="line">  &lt;session-factory&gt;</div><div class="line">    &lt;!--  mysql账户名  --&gt;</div><div class="line">    &lt;property name=&quot;connection.username&quot;&gt;root&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  mysql密码  --&gt;</div><div class="line">    &lt;property name=&quot;connection.password&quot;&gt;123456&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  mysql驱动  --&gt;</div><div class="line">    &lt;property name=&quot;connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  mysql连接URL  --&gt;</div><div class="line">    &lt;property name=&quot;connection.url&quot;&gt;jdbc:mysql:///hibernate?useUnicode=true&amp;amp;characterEncoding=UTF-8&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  数据库方言  --&gt;</div><div class="line">    &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  显示sql语句  --&gt;</div><div class="line">    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  格式化sql语句  --&gt;</div><div class="line">    &lt;property name=&quot;format_sql&quot;&gt;true&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  根据需要创建数据库  --&gt;</div><div class="line">    &lt;property name=&quot;hbm2ddl.auto&quot;&gt;create&lt;/property&gt;</div><div class="line">  &lt;/session-factory&gt;</div><div class="line">&lt;/hibernate-configuration&gt;</div></pre></td></tr></table></figure>
+<p><img src="http://ot0cka5de.bkt.clouddn.com/maven12.png" alt="maven12"></p>
+<ul>
+<li>打开idea的数据库可视化工具</li>
+<li>连接mysql</li>
+</ul>
+<p><img src="http://ot0cka5de.bkt.clouddn.com/maven13.png" alt="maven13"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven14.png" alt="maven14"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven15.png" alt="maven15"><br><strong>生成hibernate的数据库映射类</strong><br><img src="http://ot0cka5de.bkt.clouddn.com/maven16.png" alt="maven16"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven17.png" alt="maven17"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven18.png" alt="maven18"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven19.png" alt="maven19"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven20.png" alt="maven20"><br><strong>给映射类加一个无参构造方法，有参构造方法可加可不加~</strong><br><img src="http://ot0cka5de.bkt.clouddn.com/maven21.png" alt="maven21"><br><strong>配置hibernate.cfg.xml，添加刚刚生成的映射类，最终文件内容如下</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos;?&gt;</div><div class="line">&lt;!DOCTYPE hibernate-configuration PUBLIC</div><div class="line">    &quot;-//Hibernate/Hibernate Configuration DTD//EN&quot;</div><div class="line">    &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;</div><div class="line">&lt;hibernate-configuration&gt;</div><div class="line">  &lt;session-factory&gt;</div><div class="line">    &lt;!--  mysql账户名  --&gt;</div><div class="line">    &lt;property name=&quot;connection.username&quot;&gt;root&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  mysql密码  --&gt;</div><div class="line">    &lt;property name=&quot;connection.password&quot;&gt;123456&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  mysql驱动  --&gt;</div><div class="line">    &lt;property name=&quot;connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  mysql连接URL  --&gt;</div><div class="line">    &lt;property name=&quot;connection.url&quot;&gt;jdbc:mysql:///hibernate?useUnicode=true&amp;amp;characterEncoding=UTF-8&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  数据库方言  --&gt;</div><div class="line">    &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  显示sql语句  --&gt;</div><div class="line">    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  格式化sql语句  --&gt;</div><div class="line">    &lt;property name=&quot;format_sql&quot;&gt;true&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;!--  根据需要创建数据库  --&gt;</div><div class="line">    &lt;property name=&quot;hbm2ddl.auto&quot;&gt;create&lt;/property&gt;</div><div class="line"></div><div class="line">    &lt;mapping class=&quot;com.xubafiu.Goods&quot;&gt;&lt;/mapping&gt;</div><div class="line">  &lt;/session-factory&gt;</div><div class="line">&lt;/hibernate-configuration&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="http://ot0cka5de.bkt.clouddn.com/maven22.png" alt="maven22"></p>
+<p><strong>进行单元测试，有三个注解:</strong></p>
+<ul>
+<li>@Before：测试程序运行之前的准备操作</li>
+<li>@Test：测试程序运行</li>
+<li>@After：测试程序运行后</li>
+</ul>
+<p><strong>在test的Java文件夹内，添加一个名为TestGoods的类，添加如下代码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">package com.xubafiu;</div><div class="line"></div><div class="line">import org.hibernate.Session;</div><div class="line">import org.hibernate.SessionFactory;</div><div class="line">import org.hibernate.Transaction;</div><div class="line">import org.hibernate.cfg.Configuration;</div><div class="line">import org.junit.After;</div><div class="line">import org.junit.Before;</div><div class="line">import org.junit.Test;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by Administrator on 2017/3/26.</div><div class="line"> */</div><div class="line">public class TestGoods &#123;</div><div class="line">    private SessionFactory sessionFactory;</div><div class="line">    private Session session;</div><div class="line">    private Transaction transaction;</div><div class="line"></div><div class="line">    @Before</div><div class="line">    public void init() &#123;</div><div class="line">        Configuration configuration = new Configuration().configure();//创建配置对象</div><div class="line">        sessionFactory = configuration.buildSessionFactory();//创建会话工厂</div><div class="line">        session = sessionFactory.openSession();//开启会话</div><div class="line">        transaction = session.beginTransaction();//开启事务</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @After</div><div class="line">    public void destory() &#123;</div><div class="line">        transaction.commit();//事务提交</div><div class="line">        session.close();//关闭会话</div><div class="line">        sessionFactory.close();//关闭会话工厂</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void testGoods() &#123;</div><div class="line">        //生成对象</div><div class="line">        Goods goods = new Goods(1, &quot;女朋友&quot;, 2333.33);</div><div class="line">        //保存对象进数据库</div><div class="line">        session.save(goods);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://ot0cka5de.bkt.clouddn.com/maven23.png" alt="maven23"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven24.png" alt="maven24"><br><img src="http://ot0cka5de.bkt.clouddn.com/maven25.png" alt="maven25"></p>
+<h1 id="DONE"><a href="#DONE" class="headerlink" title="DONE"></a>DONE</h1><p><strong>总结一下：</strong></p>
+<ol>
+<li>创建Maven的QuickStart项目</li>
+<li>创建完成后，在pom.xml内添加需要的依赖包的语句，让Maven自动下载</li>
+<li>手动添加resources文件夹，并设置为资源文件</li>
+<li>打开项目结构，添加hibernate配置文件，选择放在main的resources文件夹内，并配置</li>
+<li>创建数据库表</li>
+<li>对数据库表进行映射生成映射类，并将映射文件配置到hibernate配置文件中</li>
+<li>使用Junit进行单元测试</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Maven/" rel="tag"># Maven</a>
+          
+            <a href="/tags/Hibernate/" rel="tag"># Hibernate</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/20/java输入流循环抛出异常/" rel="next" title="java输入流循环抛出异常">
+                <i class="fa fa-chevron-left"></i> java输入流循环抛出异常
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="xin" />
+          <p class="site-author-name" itemprop="name">xin</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#直接上干货"><span class="nav-number">1.</span> <span class="nav-text">直接上干货</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤记录"><span class="nav-number">2.</span> <span class="nav-text">步骤记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DONE"><span class="nav-number">3.</span> <span class="nav-text">DONE</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xin</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
