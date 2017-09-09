@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://luffyxin.me/2017/07/20/java输入流循环抛出异常/index.html">
 <meta property="og:site_name" content="生鱼忧患|死鱼安乐">
 <meta property="og:description" content="今天在做一个java的题目的时候,就是要做一个接收用户输入选择项的功能，如果用户输入错误了了就重新输入的功能，但是在实现的时候。第一次输入错误后就会循环的执行catch里面的内容。">
-<meta property="og:updated_time" content="2017-07-20T07:34:50.961Z">
+<meta property="og:updated_time" content="2017-08-03T23:33:47.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java输入流循环抛出异常">
 <meta name="twitter:description" content="今天在做一个java的题目的时候,就是要做一个接收用户输入选择项的功能，如果用户输入错误了了就重新输入的功能，但是在实现的时候。第一次输入错误后就会循环的执行catch里面的内容。">
@@ -111,7 +111,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
@@ -321,6 +321,8 @@
             <div class="post-wordcount">
               
                 
+                  <span class="post-meta-divider">|</span>
+                
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
@@ -328,12 +330,24 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  435
+                  433
                 </span>
               
 
               
+                <span class="post-meta-divider">|</span>
+              
 
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
               
             </div>
           
@@ -350,9 +364,35 @@
       
 
       
-        <p>今天在做一个java的题目的时候,就是要做一个接收用户输入选择项的功能，如果用户输入错误了了<br>就重新输入的功能，但是在实现的时候。第一次输入错误后就会循环的执行catch里面的内容。<br><a id="more"></a><br><strong>代码如下</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">        int i;</div><div class="line">        Scanner scan=new Scanner(System.in);</div><div class="line">        System.out.println(&quot;欢迎使用哒哒租车系统\n您是否要租车：1是 0否&quot;);</div><div class="line">      while(true)&#123;</div><div class="line">            try&#123;</div><div class="line">                i=scan.nextInt();</div><div class="line"></div><div class="line">                if(i==0)&#123;</div><div class="line">                   System.exit(0);</div><div class="line">                &#125;</div><div class="line">                else if (i==1)&#123;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    System.out.println(&quot;输入有误请重新输入!&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;catch (Exception e)&#123;</div><div class="line">                System.out.println(&quot;输入有误请重新输入!&quot;);</div><div class="line">            &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>通过查资料解决了这个问题，这是由于Scanner接受键盘输入信息的机制所造成的后果:<br>Scanner在接受键盘输入时，在内存中会有一段专门用来接收键盘输入的信息。键盘信息输入内存<br>以后与你定义的接收输入的类型匹配，如果不匹配会抛出异常，但是键盘输入的信息会停留在内存<br>当中，当下次需要输入时直接读取该内存存在的值，继续抛出异常，导致无限循环。<br>本来我是想将 <em>Scanner scan=new Scanner(System.in);</em> 写在 <em>try{}</em> 里面的。不过这样<br>就会生成很多对象，占用内存。然后在网上看到了解决的办法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catch (Exception e)&#123;</div><div class="line">                System.out.println(&quot;输入有误请重新输入!&quot;);</div><div class="line">                scan.next();</div><div class="line">            &#125;</div></pre></td></tr></table></figure></p>
-<p><em>在try catch块中，异常处理时，声明一个sc.next();这一句话的作用是读取一次内存中的<br>内容，这样等待键盘输入内存中的数据被清空，下一次可以输入</em>  </p>
+        <p>今天在做一个java的题目的时候,就是要做一个接收用户输入选择项的功能，如果用户输入错误了了就重新输入的功能，但是在实现的时候。第一次输入错误后就会循环的执行catch里面的内容。<br><a id="more"></a><br><strong>代码如下</strong></p>
+<pre><code>public static void main(String[] args) {
+  int i;
+  Scanner scan=new Scanner(System.in);
+    System.out.println(&quot;欢迎使用哒哒租车系统\n您是否要租车：1是 0否&quot;);
+  while(true){
+        try{
+            i=scan.nextInt();
+            if(i==0){
+               System.exit(0);
+            }
+            else if (i==1){
+                break;
+            }
+            else {
+                System.out.println(&quot;输入有误请重新输入!&quot;);
+            }
+        }catch (Exception e){
+            System.out.println(&quot;输入有误请重新输入!&quot;);
+        }
+  }
+}
+</code></pre><p>通过查资料解决了这个问题，这是由于Scanner接受键盘输入信息的机制所造成的后果:Scanner在接受键盘输入时，在内存中会有一段专门用来接收键盘输入的信息。键盘信息输入内存以后与你定义的接收输入的类型匹配，如果不匹配会抛出异常，但是键盘输入的信息会停留在内存当中，当下次需要输入时直接读取该内存存在的值，继续抛出异常，导致无限循环。本来我是想将 <em>Scanner scan=new Scanner(System.in);</em> 写在 <em>try{}</em> 里面的。不过这样<br>就会生成很多对象，占用内存。然后在网上看到了解决的办法：  </p>
+<pre><code>catch (Exception e){
+           System.out.println(&quot;输入有误请重新输入!&quot;);
+           scan.next();
+       }
+</code></pre><font color="red"><strong>在try catch块中，异常处理时，声明一个sc.next();这一句话的作用是读取一次内存中的<br>内容，这样等待键盘输入内存中的数据被清空，下一次可以输入</strong></font>
+
 
       
     </div>
@@ -471,7 +511,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -493,7 +533,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -550,7 +590,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -643,13 +683,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
